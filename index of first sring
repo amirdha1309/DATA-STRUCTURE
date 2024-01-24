@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+  int i,n,m;
+  char haystack[100]="sadbutsad";
+  char needle[100]="sad";
+  n=strlen(haystack);
+  m=strlen(needle);
+  int count=0;
+  for(i=0;i<n;i++)
+  {
+    if(needle[i]==haystack[i])
+    {
+      count++;
+    }
+  }
+  if(count==m)
+  {
+    printf("0");
+  }
+  else
+  {
+    printf("-1");
+  }
+}
