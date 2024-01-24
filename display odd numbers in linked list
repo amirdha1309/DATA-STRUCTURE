@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+struct node
+{
+  int data;
+  struct node*next;
+}*head=NULL,*p,*t,*newnode;
+void create_sll()
+{
+  int a[]={1,2,3,7};
+  
+  for(int i=0;i<=4;i++)
+  {
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=a[i];
+    newnode->next=NULL;
+    if(head==NULL)
+    {
+      head=newnode;
+      p=newnode;
+      
+    }
+    else
+    {
+      for(p=head;p->next!=NULL;p=p->next);
+      p->next=newnode;
+      p=newnode;
+    }
+  }
+}
+void display_sll()
+{
+  
+    for(p=head;p->next!=NULL;p=p->next)
+    {
+      if(p->data%2!=0)
+    {
+      printf("%d->",p->data);
+    }
+    }
+  
+}
+int main()
+{
+  create_sll();
+  display_sll();
+}
