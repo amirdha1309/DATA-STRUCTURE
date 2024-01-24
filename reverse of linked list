@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+  int data;
+  struct node *next;
+};
+
+struct node *add(struct node *curr,int data)
+{
+  struct node *temp=(struct node*)malloc(sizeof(struct node));
+  temp->data=data;
+  temp->next=NULL;
+  
+  curr->next=temp;
+  
+  return temp;
+}
+
+struct node *rev(struct node *head)
+{
+  struct node *prev=NULL;
+  struct node *next=NULL;
+  while(head!=NULL)
+  {
+    next=head->next;
+    head->next=prev;
+    prev=head;
+    head=next;
+  }
+  head=prev;
+  return head;
+}
+int main()
+{
+  struct node *head=(struct node*)malloc(sizeof(struct node));
+  struct node *curr,*ptr;
+  head->data=2;
+  head->next=NULL;
+  curr=head;
+  curr=add(curr,4);
+  curr=add(curr,3);
+  
+  head=rev(head);
+  ptr=head;
+  while(ptr!=NULL)
+  {
+    printf("%d,",ptr->data);
+    ptr=ptr->next;
+  }
+  
+}
