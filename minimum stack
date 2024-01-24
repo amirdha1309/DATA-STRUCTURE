@@ -1,0 +1,50 @@
+#include<stdio.h>
+#define size 5
+int stk[50],top=-1;
+int push(int ele)
+{
+  if(top==size-1)
+    printf("the stack is full");
+  else
+  {
+    top+=1;
+    stk[top]=ele;
+  }
+}
+int pop()
+{
+   if(top==-1)
+    printf("the stack is empty");
+  else
+    top=top-1;
+}
+int minimum()
+{
+  int i;
+  int min=stk[top];
+  for(i=top;i>=0;i--){
+  if(min>stk[i])
+  {
+    min=stk[i];
+  }
+  } printf("\n%d",min);
+}
+int topp(){
+  if(top==-1)
+    printf("the stack is empty");
+  else
+  {
+  printf("\n%d",stk[top]);
+  }
+}
+  
+int main()
+{
+  push(-2);
+  push(0);
+  push(-3);
+  minimum();
+  pop();
+  topp();
+  minimum();
+}
