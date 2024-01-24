@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+int top=-1,stk[20];
+
+
+struct node
+{
+  int  data;
+  struct node *next;
+}*head=NULL,*p,*t,*newnode;
+
+void insert()
+{
+  int n,i;
+  int a[]={1,2,2,1};
+  for(i=0;i<4;i++)
+  {
+    
+    newnode=(struct node *)malloc(sizeof(struct node));
+    newnode->data=a[i];
+    newnode->next=NULL;
+    if(head==NULL)
+    {
+      head=newnode;
+      p=newnode;
+    }
+    else
+    {
+      for(p=head;p->next!=NULL;p=p->next);
+      p->next=newnode;
+      p=newnode;
+    }
+  }
+}
+void push(int ele)
+{
+  top=top+1;
+  stk[top]=ele;
+  
+}
+
+
+int main()
+{
+  int i,j,flag=0;
+  
+  insert();
+  for(p=head;p!=NULL;p=p->next)
+  {
+    push(p->data);
+  }
+  for(i=top,j=0;i<top/2;i--,j++)
+  {
+    if(stk[i]!=stk[j])
+    {
+      flag=1;
+      break;
+    }
+  }
+  if(flag==0)
+    printf("true");
+  else
+    printf("false");
+}
